@@ -189,25 +189,25 @@ valid_strains <- unique(c(strains$p1, strains$p2))
 
 #for (f in args$genotypes){
 f <- "/projects/kumar-lab/sabnig/GWAS2/example/snps_bxd_inbred.csv"
-  geno <- fread(f)
-  geno[, c("major", "minor") := tstrsplit(observed, "/", fixed=TRUE, keep=1:2)]
-  geno <- geno[rs!="",]
+geno <- fread(f)
+geno[, c("major", "minor") := tstrsplit(observed, "/", fixed=TRUE, keep=1:2)]
+geno <- geno[rs!="",]
 
-  if (is.null(complete.geno)){
-    if (length(intersect(names(geno), valid_strains))>0){
-      addnames <- c(intersect(names(geno), valid_strains), "chr", "bp38", "rs", "major", "minor")
-      complete.geno <- geno[,..addnames]
+if (is.null(complete.geno)){
+  if (length(intersect(names(geno), valid_strains))>0){
+    addnames <- c(intersect(names(geno), valid_strains), "chr", "bp38", "rs", "major", "minor")
+    complete.geno <- geno[,..addnames]
     }
-  }else{
+  } else{
     addnames <- c(intersect(names(geno), valid_strains), "chr", "bp38", "rs", "major", "minor")
     geno <- geno[,..addnames]
     setkey(geno, rs)
     setkey(complete.geno, rs)
     complete.geno <- merge(complete.geno, geno, all=TRUE, by=c("chr", "bp38", "rs", "major", "minor"))
 
-  }
-  valid_strains <- setdiff(valid_strains, names(complete.geno))
 }
+
+valid_strains <- setdiff(valid_strains, names(complete.geno))
 complete.geno[, chr:=as.character(chr)]
 srdata <- complete.geno[, .(rs, major, minor)]
 numeric.geno <- complete.geno[, .("chr", "bp38", "rs", "major", "minor")]
