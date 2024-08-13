@@ -216,7 +216,7 @@ for (cn in setdiff(names(complete.geno), c("chr", "bp38", "rs", "major", "minor"
   complete.geno[get(cn)==major, c(cn) := 0]
   complete.geno[get(cn)==minor, c(cn) := 2]
   complete.geno[,c(cn) := as.numeric(get(cn))]#as.numeric(ifelse(..cn=='H', 1, ifelse(..cn==major, 0, 2)))]
-#}
+}
 
 
 # Compute the specific strains genomes
