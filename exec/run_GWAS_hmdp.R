@@ -174,7 +174,7 @@ valid_strains <- unique(c(strains$p1, strains$p2))
 # Read the genotype csv file
 
 #longfile <- tempfile()
-#complete.geno <- NULL
+complete.geno <- NULL
 #if (args$MDA){
 #  args$genotypes <- c(system.file("extdata", "snp_190703353330.csv.gz", package = "mousegwas"),
 #                      system.file("extdata", "snp_190703530013.csv.gz", package = "mousegwas"),
