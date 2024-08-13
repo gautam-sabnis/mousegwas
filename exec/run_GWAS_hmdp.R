@@ -188,7 +188,8 @@ valid_strains <- unique(c(strains$p1, strains$p2))
 
 
 #for (f in args$genotypes){
-f <- "/projects/kumar-lab/sabnig/GWAS2/example/snps_bxd_inbred.csv"
+#f <- "/projects/kumar-lab/sabnig/GWAS2/example/snps_bxd_inbred.csv"
+f <- system.file("extdata", "snps_bxd_inbred.csv", package = "mousegwas")
 geno <- fread(f)
 geno[, c("major", "minor") := tstrsplit(observed, "/", fixed=TRUE, keep=1:2)]
 geno <- geno[rs!="",]
