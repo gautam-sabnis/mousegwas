@@ -372,7 +372,7 @@ if (dim(b$phenotypes)[2]>1){
 }
 
 # Remove SNPs with more than 5% missing data and 5% MAF
-mafc <- rowSums(complete.geno[,-1:-5])/(2*(ncol(complete.geno)-5))
+mafc <- rowSums(complete.geno[,!c("chr", "bp38", "rs", "major", "minor")])/(2*(ncol(complete.geno)-5))
 b$genotypes <- b$genotypes[rowSums(is.na(b$genotypes))<=(ncol(b$genotypes)-3)*args$missing &
                              mafc >= args$MAF & mafc <= 1-args$MAF,]
 
