@@ -12,11 +12,13 @@
 #' @examples
 #' @import biomaRt
 #' @import tibble
-get_genes <- function(snps = NULL,
+
+get_genes_ac <- function(snps = NULL,
                       dist = 1000000,
                       attempts = 5, annot=NULL) {
   # Get the genes from biomaRt
   #library(biomaRt)
+  print("Reached here X1")
   if (is.null(annot)) {
     annot <- NULL
     attn <- 1
@@ -25,7 +27,9 @@ get_genes <- function(snps = NULL,
       ensembl <- NULL
       # Hard-coded version GRCm38 because MDA is with this version.
       try(ensembl <-
-            biomaRt::useMart("ensembl", dataset = "mmusculus_gene_ensembl", host="nov2020.archive.ensembl.org"))
+            biomaRt::useMart("ensembl", dataset = "mmusculus_gene_ensembl", host="https://nov2020.archive.ensembl.org"))
+      
+      all_gene_ids <- biomaRt::getBM(attributes = c("ensembl_gene_id"), mart = ensembl)
 
       try(annot <-
             biomaRt::getBM(
@@ -39,10 +43,13 @@ get_genes <- function(snps = NULL,
                 "gene_biotype",
                 "go_id"
               ),
+              filters = "ensembl_gene_id",
+              values = all_gene_ids,
               mart = ensembl,
-              useCache = FALSE
+              useCache = TRUE,
             ))
     }
+    print("Reached here Y")
   }
   if (!is.null(snps)) {
     annot$ext_start <- annot$start_position - dist

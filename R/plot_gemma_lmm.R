@@ -126,16 +126,19 @@ get_blocks <- function(gwas_pvs, blocks=system.file("extdata", "block_summary.tx
 #' @importFrom readr read_delim
 plot_gemma_lmm <- function(results_file, name="GWAS results", metasoft=FALSE, pyLMM=FALSE, annotations=NULL, namethr=5, redthr=4, diff=NULL, genotypes=NULL, maxdist=1000000, corrthr=0.6, test="p_wald", addgenes=TRUE, annot=NULL, blocks = FALSE) {
   if (metasoft){
+    print("Metasoft")
     gwas_results <- read_delim(results_file, "\t", col_names = FALSE, skip=1, guess_max = Inf)
     gwas_results <- gwas_results %>% dplyr::select_("rs"="X1", test="X9")  # RSID and PVALUE_RE2
     anno <- read_delim(annotations, ",", col_names = c("rs", "ps", "chr"), guess_max = Inf)
     gwas_results <- left_join(gwas_results, anno, by="rs")
   }else if (pyLMM){
+    print("NOT Metasoft")
     gwas_results <- read_delim(results_file, "\t", col_names = TRUE, guess_max = Inf)
     gwas_results <- gwas_results %>% dplyr::select_("rs"="SNP_ID", test="P_VALUE")  # RSID and PVALUE_RE2
     anno <- read_delim(annotations, ",", col_names = c("rs", "ps", "chr"), guess_max = Inf)
     gwas_results <- left_join(gwas_results, anno, by="rs")
   }else{
+    print("Something Else")
     gwas_results <- NULL
     # Results file might be a vector of files
     for (rf in results_file){
@@ -223,15 +226,18 @@ plot_gemma_lmm <- function(results_file, name="GWAS results", metasoft=FALSE, py
   ymin <- 1.25 * min(log10P, na.rm = TRUE)
   chr_label <- axisdf$chr
   chr_label[chr_label==20] = "X"
-
+  
+  print("Reached gwas plotting")
   # Make the plot
   p <- ggplot2::ggplot(don, aes(x=BPcum, y=P)) +
 
     # Show all points
     geom_point(aes(color=as.factor(chr), size=P) , alpha=1) +
     scale_color_manual(values = c(rep(c("#CCCCCC", "#969696"),10))) +
-    scale_size_continuous(range=c(0,1), trans = "exp") +
+#    scale_size_continuous(range=c(0,1), trans = "exp") +
     geom_segment(y = redthr, x=min(don$BPcum)-50000000, xend=max(don$BPcum)+50000000, yend=redthr,color="#FCBBA1" )
+  
+  print("Reached gwas plotting: 2")
 
   if (sum(don$ispeak) > 0){
     # Plot peaks in color
@@ -240,13 +246,14 @@ plot_gemma_lmm <- function(results_file, name="GWAS results", metasoft=FALSE, py
 
     # Print names around peaks
     if (addgenes){
-      toprs <- get_genes(ret_gwas %>% filter(P>namethr, ispeak==TRUE), dist = genesdist, annot=annot) %>% dplyr::select(rs, mgi_symbol) %>%
+      toprs <- get_genes_ac(ret_gwas %>% filter(P>namethr, ispeak==TRUE), dist = genesdist, annot=annot) %>% dplyr::select(rs, mgi_symbol) %>%
       filter(!is.na(mgi_symbol), !stringr::str_detect(mgi_symbol, "Rik$"), !stringr::str_detect(mgi_symbol, "^Gm")) %>% unique()
     # Add gene names
       p <- p + ggrepel::geom_text_repel(data = dplyr::filter(don, rs %in% toprs$rs) %>% left_join(dplyr::select(toprs, rs, mgi_symbol), by="rs"),
                                     aes(BPcum, P, label = mgi_symbol), alpha = 0.7, size=2, family="Courier")
     }
 }
+  print("Reached gwas plotting: 3")
   p <- p + scale_x_continuous( label = chr_label, breaks= axisdf$center ) +
     scale_y_continuous(expand = c(0, 0) ) +     # remove space between plot area and x axis
     ylim(ymin,ymax) +
@@ -261,6 +268,7 @@ plot_gemma_lmm <- function(results_file, name="GWAS results", metasoft=FALSE, py
       panel.grid.minor.x = element_blank()
     )
 
+  print("Reached gwas plotting: 4")
   return(list(plot=p, gwas=ret_gwas, pwas=don))
 }
 

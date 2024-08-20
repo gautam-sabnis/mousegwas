@@ -78,7 +78,8 @@ write_inrich_snps <- function(snps, basedir) {
 #' @examples
 write_genes_map <- function(basedir) {
   # Write the genes map chr, staret, stop, ID, desc (mgi_symbol)
-  genes <- get_genes()
+  print("Reached here X")
+  genes <- get_genes_ac()
   write_delim(
     unique(genes %>% dplyr::filter(gene_biotype == "protein_coding") %>% dplyr::select(
       chromosome_name,
@@ -91,6 +92,8 @@ write_genes_map <- function(basedir) {
     delim = "\t",
     col_names = FALSE
   )
+  
+  print("Reached here XX")
   library(org.Mm.eg.db)
   paths <- AnnotationDbi::select(org.Mm.eg.db, columns = c("PATH"), keys = genes$ensembl_gene_id, keytype="ENSEMBL")
   kgenes <- left_join(genes, paths, by = c("ensembl_gene_id" = "ENSEMBL"))
@@ -164,20 +167,20 @@ write_genes_map <- function(basedir) {
     quote = 3
   )
 
-  sfari <- system.file("extdata", "SFARI-Gene_genes_01-13-2021release_01-22-2021export.csv", package = "mousegwas")
-  sft <- read_csv(sfari) %>% filter(!is.na(`ensembl-id`))
-  sft <- right_join(sft, convert_to_mouse(sft$`ensembl-id`), by = c("ensembl-id" = "Gene.stable.ID"))
-  s1 <- tibble(gene = sft$Gene.stable.ID.1, trait="SFARI_all", desc="SFARI ASD 1-3 gene list")
-  s2 <- tibble(gene = sft$Gene.stable.ID.1[!is.na(sft$`gene-score`) & sft$`gene-score`<=2], trait="SFARI_1_2", desc="SFARI ASD 1-2 gene list")
-  s3 <- tibble(gene = sft$Gene.stable.ID.1[!is.na(sft$`gene-score`) & sft$`gene-score`==1], trait="SFARI_1", desc="SFARI ASD 1 gene list")
-  write.table(
-    as.data.frame(rbind(s1, s2, s3)),
-    file = paste0(basedir, "/groups_SFARI_terms_for_INRICH.txt"),
-    sep = "\t",
-    col.names = F,
-    row.names = F,
-    quote = 3
-  )
+  #sfari <- system.file("extdata", "SFARI-Gene_genes_01-13-2021release_01-22-2021export.csv", package = "mousegwas")
+  #sft <- read_csv(sfari) %>% filter(!is.na(`ensembl-id`))
+  #sft <- right_join(sft, convert_to_mouse(sft$`ensembl-id`), by = c("ensembl-id" = "Gene.stable.ID"))
+  #s1 <- tibble(gene = sft$Gene.stable.ID.1, trait="SFARI_all", desc="SFARI ASD 1-3 gene list")
+  #s2 <- tibble(gene = sft$Gene.stable.ID.1[!is.na(sft$`gene-score`) & sft$`gene-score`<=2], trait="SFARI_1_2", desc="SFARI ASD 1-2 gene list")
+  #s3 <- tibble(gene = sft$Gene.stable.ID.1[!is.na(sft$`gene-score`) & sft$`gene-score`==1], trait="SFARI_1", desc="SFARI ASD 1 gene list")
+  #write.table(
+  #  as.data.frame(rbind(s1, s2, s3)),
+  #  file = paste0(basedir, "/groups_SFARI_terms_for_INRICH.txt"),
+  #  sep = "\t",
+  #  col.names = F,
+  #  row.names = F,
+  #  quote = 3
+  #)
   return(unique(genes %>% dplyr::select(-go_id)))
 }
 
