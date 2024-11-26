@@ -189,7 +189,7 @@ complete.geno <- NULL
 
 #for (f in args$genotypes){
 #f <- "/projects/kumar-lab/sabnig/GWAS2/example/snps_bxd_inbred.csv"
-f <- system.file("extdata", "snps_hmdp2.csv.gz", package = "mousegwas")
+f <- system.file("extdata", "snps_inbred_bxd.csv.gz", package = "mousegwas")
 geno <- fread(f)
 geno[, c("major", "minor") := tstrsplit(observed, "/", fixed=TRUE, keep=1:2)]
 geno <- geno[rs!="",]
