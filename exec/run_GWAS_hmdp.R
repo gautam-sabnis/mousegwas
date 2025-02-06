@@ -48,7 +48,7 @@ parser$add_argument("--shuffle", default=FALSE, action="store_true",
                     help="Shuffle the phenotypes between the different individuals")
 parser$add_argument("--seed", type="integer", default=100,
                     help="If shuffle is true, set the seed to avoid repeating the same results but have the option to rerun")
-parser$add_argument("--qqnorm", default=FALSE, action="store_true",
+parser$add_argument("--qqnorm", default=TRUE, action="store_true",
                     help="QQNORM each phenotype before analyzing")
 parser$add_argument("--genedist", default=1000000, type="integer",
                     help="gene distance from SNP, for gene reporting")
