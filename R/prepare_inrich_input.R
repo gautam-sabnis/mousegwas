@@ -79,7 +79,7 @@ write_inrich_snps <- function(snps, basedir) {
 write_genes_map <- function(basedir) {
   # Write the genes map chr, staret, stop, ID, desc (mgi_symbol)
   print("Reached here X")
-  genes <- get_genes_ac()
+  genes <- get_genes_ac() |> tidyr::drop_na()
   write_delim(
     unique(genes %>% dplyr::filter(gene_biotype == "protein_coding") %>% dplyr::select(
       chromosome_name,

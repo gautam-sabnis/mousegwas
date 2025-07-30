@@ -1,0 +1,305 @@
+strain: Strain
+phenotypes:
+  theta1:
+      papername: Asymptote
+      group: FBoli
+  theta2:
+      papername: Slope
+      group: FBoli
+  theta3:
+      papername: Displacement
+      group: FBoli
+  bin_avg_5.Corner_time_secs:
+      papername: Corner_time_secs_5
+      group: Open-field
+  bin_avg_20.Corner_time_secs:
+      papername: Corner_time_secs_20
+      group: Open-field
+  bin_avg_55.Corner_time_secs:
+      papername: Corner_time_secs_55
+      group: Open-field
+  bin_avg_5.Corner_distance_cm:
+      papername: Corner_distance_cm_5
+      group: Open-field
+  bin_avg_20.Corner_distance_cm:
+      papername: Corner_distance_cm_20
+      group: Open-field
+  bin_avg_55.Corner_distance_cm:
+      papername: Corner_distance_cm_55
+      group: Open-field
+  bin_avg_5.Periphery_time_secs:
+      papername: periphery_time_secs_5
+      group: Open-field
+  bin_avg_20.Periphery_time_secs:
+      papername: periphery_time_secs_20
+      group: Open-field
+  bin_avg_55.Periphery_time_secs:
+      papername: periphery_time_secs_55
+      group: Open-field
+  bin_avg_5.Periphery_distance_cm:
+      papername: periphery_distance_cm_5
+      group: Open-field
+  bin_avg_20.Periphery_distance_cm:
+      papername: periphery_distance_cm_20
+      group: Open-field
+  bin_avg_55.Periphery_distance_cm:
+      papername: periphery_distance_cm_55
+      group: Open-field
+      
+groups:
+  - FBoli
+  - Open-field
+
+F1:
+  - B6129SF1/J:
+      - C57BL/6J
+      - 129S1/SvImJ
+  - B6129PF1/J:
+      - C57BL/6J
+      - 129P3/J
+  - B6AF1/J:
+      - C57BL/6J
+      - A/J
+  - B6C3F1/J:
+      - C57BL/6J
+      - C3H/HeJ
+  - B6CBAF1/J:
+      - C57BL/6J
+      - CBA/J
+  - B6D2F1/J:
+      - C57BL/6J
+      - DBA/2J
+  - B6SJLF1/J:
+      - C57BL/6J
+      - SJL/J
+  - CAF1/J:
+      - BALB/cJ
+      - A/J
+  - CB6F1/J:
+      - BALB/cJ
+      - C57BL/6J
+  - CByB6F1/J:
+      - BALB/cByJ
+      - C57BL/6J
+  - NZBWF1/J:
+      - NZB/BlNJ
+      - NZW/LacJ
+covar:
+  - Sex
+sex: Sex
+translate:
+  - BTBRT...tf.J: BTBR T<+> Itpr3<tf>/J
+  - 129S1.SvImJ: 129S1/SvImJ
+  - C3H/HeOuJ: C3H/HeJ
+  - NON/LtJ: NON/ShiLtJ
+  - NOD/LtJ: NOD/ShiLtJ
+  - CAST/EiJ: none
+  - PWD/PhJ: none
+  - CZECHII/EiJ: none
+  - PWK/PhJ: none
+  - MSM/MsJ: none
+  - MOLF/EiJ: none
+coat:
+  - 129P3/J: albino
+  - 129S1/SvImJ: white-bellied agouti
+  - 129X1/SvJ: albino
+  - A/HeJ: albino
+  - A/J: albino
+  - AKR/J: albino
+  - B6.Cg-Ay/J: yellow or black
+  - B6.Cg-Tubtub/J: black
+  - B6.V-Lepob/J: black
+  - BALB/cByJ: albino
+  - BALB/cJ: albino
+  - BKS.Cg-m +/+ Leprdb/J: black
+  - BKSChpLt.HRS-Cpefat/J: black
+  - BPH/2J: albino
+  - BPL/1J: misty
+  - BPN/3J: black
+  - BTBR T+ Itpr3tf/J: black
+  - BUB/BnJ: albino
+  - C3HeB/FeJ: agouti
+  - C3H/HeJ: agouti
+  - C3H/HeSnJ: agouti
+  - C57BL/10J: black
+  - C57BL/6J: black
+  - C57BLKS/J: black
+  - C57BR/cdJ: brown
+  - C57L/J: leaden
+  - C58/J: black
+  - CAST/EiJ: agouti
+  - CBA/CaJ: agouti
+  - CBA/J: agouti
+  - CE/J: greyish white
+  - CZECHII/EiJ: white-bellied agouti
+  - DBA/1J: dilute brown
+  - DBA/2J: dilute brown
+  - FVB/NJ: albino
+  - I/LnJ: dilute brown
+  - JF1/MsJ: white w/ black spots
+  - KK/HlJ: albino
+  - LP/J: white-bellied agouti
+  - MA/MyJ: albino
+  - MOLF/EiJ: white-bellied agouti
+  - MSM/MsJ: white-bellied agouti
+  - NOD/ShiLtJ: albino
+  - NON/ShiLtJ: albino
+  - NZB/BlNJ: black
+  - NZW/LacJ: albino
+  - PERA/EiJ: agouti
+  - P/J: fawn; pink eyes
+  - PL/J: albino
+  - PWD/PhJ: agouti
+  - PWK/PhJ: agouti
+  - RBF/DnJ: albino
+  - RF/J: albino
+  - RIIIS/J: albino
+  - SEA/GnJ: light brown agouti
+  - SJL/J: albino
+  - SM/J: white-bellied agouti
+  - SPRET/EiJ: white-bellied agouti
+  - SWR/J: albino
+  - WSB/EiJ: white-bellied agouti
+  - YBR/EiJ: brown
+  - B6FVBF1/J: agouti
+  - B6AF1/J: black
+  - CAF1/J: albino
+  - B6D2F1/J: black
+  - CB6F1/J: agouti
+  - NZBWF1/J: agouti
+  - CByB6F1/J: agouti
+  - B6C3F1/J: agouti
+  - B6CBAF1/J: agouti
+  - B6SJLF1/J: agouti
+  - B6129PF1/J: white-bellied agouti
+  - B6129SF1/J: white-bellied agouti
+  - NOR/LtJ: albino
+  - TALLYHO/JngJ: albino
+  - NU/J: albino, without hair
+  - MRL/MpJ: albino
+  - LG/J: albino
+  - 129S1/SvlmJ: white-bellied agouti
+  - C3H/HeOuJ: agouti
+  - C57BL/10SnJ: black
+  - C57BL/6NJ: black
+  - KK/HiJ: albino
+  - NZO/HILtJ: agouti
+  - BXD100/RwwJ: black
+  - BXD194/RwwJ: Black
+  - BXD100/RwwJ: Black
+  - BXD48/RwwJ: Black
+  - BXD55/RwwJ: Brown
+  - BXD169/RwwJ: Gray
+  - BXD154/RwwJ: Black
+  - BXD214/RwwJ: Gray
+  - BXD31/TyJ: Black
+  - BXD44/RwwJ: Gray
+  - BXD70/RwwJ: Gray
+  - BXD45/RwwJ: Gray
+  - BXD125/RwwJ: Black
+  - BXD91/2RwwJ: Gray
+  - BXD38/TyJ: Dark Gray
+  - BXD40/TyJ: Dark Gray
+  - BXD19/TyJ: Dark Gray
+  - BXD73/RwwJ: Gray
+  - BXD86/RwwJ: Black
+  - BXD102/RwwJ: Brown
+  - BXD67/RwwJ: Gray
+  - BXD2/TyJ: Black
+  - BXD170/RwwJ: Gray
+  - BXD95/RwwJ: Gray
+  - BXD62/RwwJ: Brown
+  - BXD32/TyJ: Black
+  - BXD49/RwwJ: Dark Gray
+  - BXD75/RwwJ: Gray
+  - BXD73a/RwwJ: Gray
+  - BXD113/RwwJ: Brown
+  - BXD74/RwwJ: Brown
+  - BXD124/RwwJ: Black
+  - BXD1/TyJ: Gray
+  - BXD27/TyJ: Brown
+  - BXD48a/RwwJ: Black
+  - BXD197/RwwJ: Brown
+  - BXD160/RwwJ: Gray
+  - BXD161/RwwJ: Gray
+  - BXD156/RwwJ: Black
+  - BXD157/RwwJ: Dark Gray
+  - BXD128/RwwJ: Dark Gray
+  - BXD87/RwwJ: Black
+  - BXD56/RwwJ: Black
+  - BXD6/TyJ: Dark Gray
+  - BXD11/TyJ: Black
+  - BXD83/RwwJ: Gray
+  - BXD172/RwwJ: Dark Gray
+  - BXD190/RwwJ: Black
+  - BXD78/2RwwJ: Brown
+  - BXD73b/RwwJ: Gray
+  - BXD12/TyJ: Dark Gray
+  - BXD89/RwwJ: Gray
+  - BXD39/TyJ: Dark Gray
+  - BXD28/TyJ: Brown
+  - BXD85/RwwJ: Dark Gray
+  - BXD53/2RwwJ: Brown
+  - BXD33/TyJ: Dark Gray
+  - BXD29-Tlr4<lps-2J>/J: Dark Gray
+  - BXD29/Ty: Dark Gray
+  - BXD99/RwwJ: Gray
+  - BXD68/RwwJ: Brown
+  - BXD85/RwwJ: Gray
+  - BXD88/2RwwJ: Brown
+  - BXD180/RwwJ: Dark Gray
+  - BXD191/RwwJ: Black
+  - BXD81/RwwJ: Gray
+  - BXD71/RwwJ: Gray
+  - BXD168/RwwJ: Black
+  - BXD199/RwwJ: Black
+  - BXD43/RwwJ: Black
+  - BXD77/RwwJ: Gray
+  - BXD98/RwwJ: Gray
+  - BXD184/RwwJ: Dark Gray
+  - BXD24/TyJ-Cep290<RD16>/J: Brown
+  - BXD65a/RwwJ: Dark Brown
+  - BXD42/TyJ: Black
+  - BXD84/RwwJ: Gray
+  - BXD21/TyJ: Gray
+  - BXD79/RwwJ: Dark Gray
+  - BXD34/TyJ: Black
+  - BXD69/RwwJ: Grayish Brown
+  - BXD8/TyJ: Dark Gray
+  - BXD69/RwwJ: Gray
+  - BXD88/2RwwJ: Dark Brown
+  - BXD13/TyJ: Dark Brown
+  - BXD50/RwwJ: Black
+  - BXD65/RwwJ: Dark Brown
+  - BXD66/RwwJ: Brown
+  - BXD15/TyJ: Brown
+  - BXD177/RwwJ: Dark Brown
+  - BXD128a/RwwJ: Black
+  - BXD66/RwwJ: Dark Brown
+  - BXD15/TyJ: Dark Brown
+  - BXD177/RwwJ: Brown
+  - BXD51/RwwJ: Black
+  - BXD65/RwwJ: Brown
+  - BXD9/TyJ: Gray
+  - BXD150RwwJ: Dark Brown
+  - BXD14/TyJ: Black
+  - BXD16/TyJ: Dark Gray
+  - BXD90/RwwJ: Gray
+  - BXD61/RwwJ: Gray
+  - BXD5/TyJ: Dark Gray
+  - BXD64/BwwJ: Gray
+  - BXD18/TyJ: Dark Gray
+  - BXD151/RwwJ: Black
+  - BXD152/RwwJ: Black
+  - BXD63/RwwJ: Gray
+  - BXD22/TyJ: Dark Gray
+  - BXD24/TyRwwJ: Brown
+  - BXD144/RwwJ: Dark Grey
+  - BXD122/RwwJ: Dark Grey
+  - BXD144/RwwJ: Dark Gray
+  - BXD122/RwwJ: Dark Gray
+  - BXD101/RwwJ: Gray
+  - BXD178/RwwJ: Dark Gray
+  - BXD60/RwwJ: Brown
+confSNPs:
+- rs32105080

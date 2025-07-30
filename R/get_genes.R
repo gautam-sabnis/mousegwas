@@ -27,7 +27,7 @@ get_genes_ac <- function(snps = NULL,
       ensembl <- NULL
       # Hard-coded version GRCm38 because MDA is with this version.
       try(ensembl <-
-            biomaRt::useMart("ensembl", dataset = "mmusculus_gene_ensembl", host="https://nov2020.archive.ensembl.org"))
+            biomaRt::useMart("ensembl", dataset = "mmusculus_gene_ensembl", host="https://may2025.archive.ensembl.org"))
       
       all_gene_ids <- biomaRt::getBM(attributes = c("ensembl_gene_id"), mart = ensembl)
 
